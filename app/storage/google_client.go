@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	DEFAULT_GCS_LINK string = "https://storage.googleapis.com/alta-cookit/"
+	DEFAULT_GCS_LINK string = "https://storage.googleapis.com/altabucket/"
 )
 
 type ClientUploader struct {
