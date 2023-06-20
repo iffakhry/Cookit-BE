@@ -102,10 +102,11 @@ func (us *userService) Profile(userID uint) (users.Core, error) {
 
 // Update implements users.UserService
 func (us *userService) Update(userID uint, fileData multipart.FileHeader, updateData users.Core) (users.Core, error) {
-	url, err := helpers.GetUrlImagesFromAWS(fileData, int(1))
-	if err != nil {
-		return users.Core{}, errors.New("validate: " + err.Error())
-	}
+	// url, err := helpers.GetUrlImagesFromAWS(fileData, int(1))
+	// if err != nil {
+	// 	return users.Core{}, errors.New("validate: " + err.Error())
+	// }
+	url := "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
 	updateData.ProfilePicture = url
 	res, err := us.qry.Update(uint(userID), updateData)
 	if err != nil {

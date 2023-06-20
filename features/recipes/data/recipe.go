@@ -102,10 +102,10 @@ func (d *RecipeData) InsertRecipe(entity *recipes.RecipeEntity) (*recipes.Recipe
 
 	for index, file := range entity.Image {
 		// Local
-		urlImage, err := storage.UploadFile(file, entity.ImageName[index])
+		// urlImage, err := storage.UploadFile(file, entity.ImageName[index])
 
 		// Google Cloud Storage
-		// urlImage, err := storage.GetStorageClient().UploadFile(file, entity.ImageName[index])
+		urlImage, err := storage.GetStorageClient().UploadFile(file, entity.ImageName[index])
 
 		if err != nil {
 			return nil, err

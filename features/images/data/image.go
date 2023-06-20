@@ -35,7 +35,7 @@ func (d *ImageData) ActionValidator(id, recipeId, userId uint) bool {
 func (d *ImageData) SelectImagesByRecipeId(recipeId uint) *[]_imageModel.Image {
 	tempGorms := []_imageModel.Image{}
 	d.db.Where("recipe_id = ?", recipeId).Find(&tempGorms)
-	
+
 	return &tempGorms
 }
 
@@ -45,11 +45,11 @@ func (d *ImageData) InsertImage(entities *[]images.ImageEntity) (*[]images.Image
 	for index, entity := range *entities {
 		if entity.Image != nil {
 			// Local
-			urlImage, err := storage.UploadFile(entity.Image, entity.ImageName)
+			// urlImage, err := storage.UploadFile(entity.Image, entity.ImageName)
 
 			// Google Cloud Storage
-			// urlImage, err := storage.GetStorageClient().UploadFile(entity.Image, entity.ImageName)
-		
+			urlImage, err := storage.GetStorageClient().UploadFile(entity.Image, entity.ImageName)
+
 			if err != nil {
 				return nil, err
 			}
@@ -84,18 +84,18 @@ func (d *ImageData) UpdateImageById(entity *images.ImageEntity) (*images.ImageEn
 
 			// Google Cloud Storage
 			// err := storage.GetStorageClient().DeleteFile(gorm.UrlImage)
-			
+
 			if err != nil {
 				return nil, err
 			}
 		}
 
 		// Local
-		urlImage, err := storage.UploadFile(entity.Image, entity.ImageName)
+		// urlImage, err := storage.UploadFile(entity.Image, entity.ImageName)
 
 		// Google Cloud Storage
-		// urlImage, err := storage.GetStorageClient().UploadFile(entity.Image, entity.ImageName)
-		
+		urlImage, err := storage.GetStorageClient().UploadFile(entity.Image, entity.ImageName)
+
 		if err != nil {
 			return nil, err
 		}
