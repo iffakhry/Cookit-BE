@@ -98,10 +98,10 @@ func (d *CommentData) UpdateCommentById(entity *comments.CommentEntity) (*commen
 	if entity.Image != nil {
 		if tempGorm.UrlImage != "" {
 			// Local
-			err := storage.DeleteFile(tempGorm.UrlImage)
+			// err := storage.DeleteFile(tempGorm.UrlImage)
 
 			// Google Cloud Storage
-			// err := storage.GetStorageClient().DeleteFile(tempGorm.UrlImage)
+			err := storage.GetStorageClient().DeleteFile(tempGorm.UrlImage)
 
 			if err != nil {
 				return nil, err

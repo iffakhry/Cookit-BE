@@ -166,10 +166,10 @@ func (d *RecipeData) DeleteRecipeById(entity *recipes.RecipeEntity) error {
 
 	for _, imageGorm := range *imageGorms {
 		// Local
-		err := storage.DeleteFile(imageGorm.UrlImage)
+		// err := storage.DeleteFile(imageGorm.UrlImage)
 
 		// Google Cloud Storage
-		// err := storage.GetStorageClient().DeleteFile(imageGorm.UrlImage)
+		err := storage.GetStorageClient().DeleteFile(imageGorm.UrlImage)
 		if err != nil {
 			return err
 		}

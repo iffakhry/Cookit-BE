@@ -80,10 +80,10 @@ func (d *ImageData) UpdateImageById(entity *images.ImageEntity) (*images.ImageEn
 	if entity.Image != nil {
 		if gorm.UrlImage != "" {
 			// Local
-			err := storage.DeleteFile(gorm.UrlImage)
+			// err := storage.DeleteFile(gorm.UrlImage)
 
 			// Google Cloud Storage
-			// err := storage.GetStorageClient().DeleteFile(gorm.UrlImage)
+			err := storage.GetStorageClient().DeleteFile(gorm.UrlImage)
 
 			if err != nil {
 				return nil, err
